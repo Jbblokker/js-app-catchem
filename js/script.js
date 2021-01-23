@@ -15,6 +15,15 @@ let pokemonList = [
   type: [ 'water','ice']
   }
 ];
+  function add(pokemon) {
+      pokemonList.push(pokemon);
+    }
+  function getAll() {
+      return pokemonList;
+    }
+  return { add: add, getAll: getAll
+  };
+})();
 //forEach value being used to display array.
 pokemonRepository.getAll().forEach(function(pokemon) {
   document.write('<br>' + 'My name is ' + pokemon.name + ' and I am ' + ' (height: ' +
