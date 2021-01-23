@@ -1,5 +1,6 @@
 //this is an arry of pokemon. we are using name, height, and type as objects.
-let pokemonList = [
+let pokemonRepository = (function () {
+let pokemonList =[
   { name: 'Blastoise',
   height: 5,
   type: 'water'
