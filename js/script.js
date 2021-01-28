@@ -26,12 +26,8 @@ let pokemonList =[
   };
 })();
 //forEach value being used to display array.
-pokemonRepository.getAll().forEach(function(pokemon) {
-  document.write('<br>' + 'My name is ' + pokemon.name + ' and I am ' + ' (height: ' +
-pokemon.height + ')' + ' tall, and I am a ' + pokemon.type + ' pokemon.' );
 });
 
-pokemonRepository.add({name: 'Bulbasaur '});
 //For loop that was previously used to display pokemonList
 //for (let i=0; i < pokemonList.length; i++){
   //if (pokemonList[i].height <= 7){
