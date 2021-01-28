@@ -28,6 +28,15 @@ let pokemonList =[
 //forEach value being used to display array.
 });
 
+
+
+
+
+//document.write used to display pokemon from array
+  //document.write('<br>' + 'My name is ' + pokemon.name + ' and I am ' + ' (height: ' +
+//pokemon.height + ')' + ' tall, and I am a ' + pokemon.type + ' pokemon.' );
+//});
+
 //For loop that was previously used to display pokemonList
 //for (let i=0; i < pokemonList.length; i++){
   //if (pokemonList[i].height <= 7){
