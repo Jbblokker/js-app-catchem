@@ -67,10 +67,11 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   };
 })();
 //forEach value being used to display array.
-pokemonRepository.getAll().forEach(function (pokemon) {
-  pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function() {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
-
 
 
 
