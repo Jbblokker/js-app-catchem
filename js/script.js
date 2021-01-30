@@ -1,21 +1,8 @@
 //this is an arry of pokemon. we are using name, height, and type as objects.
 let pokemonRepository = (function () {
-let pokemonList =[
-  { name: 'Blastoise',
-  height: 5,
-  type: 'water'
-  },
+let pokemonList =[];
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-  { name: 'Charzard',
-  height: 5,
-  type: [ 'fire', 'flying']
-  },
-
-  { name: 'Lapras',
-  height: 8,
-  type: [ 'water','ice']
-  }
-];
   function add(pokemon) {
       pokemonList.push(pokemon);
     }
