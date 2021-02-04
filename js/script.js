@@ -14,6 +14,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
+      showModal(pokemon);
     });
   }
   function loadList() {
@@ -56,11 +57,12 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     listpokemon.appendChild(button);
     pokemonList.appendChild(listpokemon);
     button.addEventListener('click', function (event) {
-      showDetails(pokemon)
+      showDetails(pokemon);
     });
   }
 
   function showModal(pokemon) {
+    let modalContainer = document.querySelector('#modal-container');
     modalContainer.innerHTML = '';
     let modal = document.createElement('div');
     modal.classList.add('modal');
@@ -86,7 +88,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     modalContainer.appendChild(modal);
     modal.appendChild(myImage);
 
-    modal.Container.classList.add ('is-visibile');
+    modalContainer.classList.add ('is-visibile');
   }
 
   function hideModal() {
@@ -108,9 +110,9 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     }
   });
 
-  document.querySelector('#show-modal').addEventListener('click', () => {
-    showModal('Modal title', 'This is the modal content!');
-  });
+  //document.querySelector('#show-modal').addEventListener('click', () => {
+  //  showModal('Modal title', 'This is the modal content!');
+//});
 
   return { add: add,
      getAll: getAll,
