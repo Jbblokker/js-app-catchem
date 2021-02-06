@@ -15,6 +15,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
       showModal(pokemon);
+
     });
   }
   function loadList() {
@@ -68,12 +69,11 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     let modal = document.createElement('div');
     modal.classList.add('modal');
 
-    let closeButtonElemenet = document.createElement('button');
 //adding a button inside the modal to allow us to close the modal
+    let closeButtonElement = document.createElement('button');
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'close X';
     closeButtonElement.addEventListener('click',hideModal);
-
 //here we are adding the pokemon name
     let titleElement = document.createElement('h1');
     titleElement.innerText = pokemon.name;
@@ -103,6 +103,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     { hideModal();
     }
   });
+//this function will hide the modal if you click outside of the modal box
   modalContainer.addEventListener('click', (e) => {
     //since this is also triggered when clicking INSIDE th modal
     //We only want to close if the user clicks directly on the overlay
