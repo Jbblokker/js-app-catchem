@@ -10,7 +10,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
   function getAll() {
       return pokemonList;
     }
-
+//This function will allow the modal to show and data in the console log
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
       console.log(pokemon);
@@ -33,7 +33,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
       console.error(e);
     })
   }
-
+//this function is for loading the data needed for our modal
   function loadDetails(item) {
       let url = item.detailsUrl;
       return fetch(url).then(function (response) {
@@ -58,9 +58,10 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     pokemonList.appendChild(listpokemon);
     button.addEventListener('click', function (event) {
       showDetails(pokemon);
+
     });
   }
-
+//this is our modal
   function showModal(pokemon) {
     let modalContainer = document.querySelector('#modal-container');
     modalContainer.innerHTML = '';
@@ -68,16 +69,19 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     modal.classList.add('modal');
 
     let closeButtonElemenet = document.createElement('button');
+//adding a button inside the modal to allow us to close the modal
     closeButtonElement.classList.add('modal-close');
     closeButtonElement.innerText = 'close X';
     closeButtonElement.addEventListener('click',hideModal);
 
+//here we are adding the pokemon name
     let titleElement = document.createElement('h1');
     titleElement.innerText = pokemon.name;
 
     let contentElement = document.createtElement ('p');
+//here we are adding the height
     contentElement.innerText = 'Height: ' + pokemon.height;
-
+//here we are adding the pokemon image
     let container = document.querySelector('#image-container');
     let myImage = document.createElement('img');
     myImage.src = item.imageUrl;
@@ -90,17 +94,16 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
     modalContainer.classList.add ('is-visibile');
   }
-
+//the hide modal function
   function hideModal() {
     modalContainer.classList.remove('is-visible');
   }
-
+//this function will hide the modal if you press the escape key on your keyboard
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalContainer.classList.contains('is-visible'))
     { hideModal();
     }
   });
-
   modalContainer.addEventListener('click', (e) => {
     //since this is also triggered when clicking INSIDE th modal
     //We only want to close if the user clicks directly on the overlay
