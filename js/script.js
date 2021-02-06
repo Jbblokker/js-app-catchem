@@ -77,14 +77,13 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 //here we are adding the pokemon name
     let titleElement = document.createElement('h1');
     titleElement.innerText = pokemon.name;
-
-    let contentElement = document.createtElement ('p');
 //here we are adding the height
+    let contentElement = document.createElement ('p');
     contentElement.innerText = 'Height: ' + pokemon.height;
 //here we are adding the pokemon image
     let container = document.querySelector('#image-container');
     let myImage = document.createElement('img');
-    myImage.src = item.imageUrl;
+    myImage.src = pokemon.imageUrl;
 
     modal.appendChild(closeButtonElement);
     modal.appendChild(titleElement);
@@ -92,7 +91,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     modalContainer.appendChild(modal);
     modal.appendChild(myImage);
 
-    modalContainer.classList.add ('is-visibile');
+    modalContainer.classList.add ('is-visible');
   }
 //the hide modal function
   function hideModal() {
