@@ -1,3 +1,4 @@
+// //this is an arry of pokemon. we are using name, height, and type as objects.
 //this is an arry of pokemon. we are using name, height, and type as objects.
 let pokemonRepository = (function () {
 let modalContainer = document.querySelector('#modal-container');
@@ -59,63 +60,9 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     pokemonList.appendChild(listpokemon);
     button.addEventListener('click', function (event) {
       showDetails(pokemon);
-
     });
-  }
-//this is our modal
-  function showModal(pokemon) {
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.innerHTML = '';
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-
-//adding a button inside the modal to allow us to close the modal
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'close X';
-    closeButtonElement.addEventListener('click',hideModal);
-//here we are adding the pokemon name
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = pokemon.name;
-//here we are adding the height
-    let contentElement = document.createElement ('p');
-    contentElement.innerText = 'Height: ' + pokemon.height;
-//here we are adding the pokemon image
-    let container = document.querySelector('#image-container');
-    let myImage = document.createElement('img');
-    myImage.src = pokemon.imageUrl;
-
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
-    modalContainer.appendChild(modal);
-    modal.appendChild(myImage);
-
-    modalContainer.classList.add ('is-visible');
-  }
-//the hide modal function
-  function hideModal() {
-    modalContainer.classList.remove('is-visible');
-  }
-//this function will hide the modal if you press the escape key on your keyboard
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible'))
-    { hideModal();
-    }
-  });
-//this function will hide the modal if you click outside of the modal box
-  modalContainer.addEventListener('click', (e) => {
-    //since this is also triggered when clicking INSIDE th modal
-    //We only want to close if the user clicks directly on the overlay
-    let target = e.target;
-    if(target === modalContainer) {
-      hideModal();
-    }
   });
 
-  //document.querySelector('#show-modal').addEventListener('click', () => {
-  //  showModal('Modal title', 'This is the modal content!');
-//});
 
   return { add: add,
      getAll: getAll,
@@ -123,9 +70,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
      loadList: loadList,
      loadDetails: loadDetails,
      showDetails: showDetails,
-     hideModal: hideModal,
-     showModal: showModal
-  }
+    }
 
 })();
 
