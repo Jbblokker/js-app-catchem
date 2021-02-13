@@ -1,7 +1,6 @@
 // //this is an arry of pokemon. we are using name, height, and type as objects.
 //this is an arry of pokemon. we are using name, height, and type as objects.
 let pokemonRepository = (function () {
-let modalContainer = document.querySelector('#modal-container');
 let pokemonList =[];
 let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
@@ -50,15 +49,6 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
       });
     }
 
-  function addListItem(pokemon){
-    let pokemonList = document.querySelector('.pokemon-list');
-    let listpokemon = document.createElement('li');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('button-class');
-    listpokemon.appendChild(button);
-    pokemonList.appendChild(listpokemon);
-    button.addEventListener('click', function (event) {
       showDetails(pokemon);
     });
   });
