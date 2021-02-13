@@ -13,6 +13,29 @@
     <title>Gotta Catch'em</title>
   </head>
   <body>
+      <nav class="navbar navbar-expand-sm navbar-dark" style= "background-color: #f0e446;">
+  <a class="navbar-brand" href="#">The Pokedex</a>
+   <img src="./img/pokeball.png" width="30" height="30" alt="pokeball image">
+     <div class="sr-only"> image of a small pokeball in top nav bar</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        id="myInput"
+        class="form-control mr-sm-2"
+        type="search"
+        onkeyup="search()"
+        placeholder="Search"
+
+        aria-label="Search"
+        />
+    </form>
+  </div>
+</nav>
      src="https://code.jquery.com/jquery-3.5.1.js"
      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
      crossorigin="anonymous"></script>
