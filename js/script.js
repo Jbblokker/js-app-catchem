@@ -63,26 +63,26 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
        image.attr("src", pokemon.imageUrl);
        let body = $('<div class="card-body" style="text-align: center;"></div>');
        let button = $(
-         '<button type="button" class="btn" style="background-color: #f0e446; color: black" data-toggle="modal" data-target="#exampleModal">Profile</button>'
+         '<button type="button" class="btn" style="background-color: #f0e446; color: black" data-toggle="modal" data-target="#exampleModal">See profile</button>'
        );
 
        // Append
        row.append(card);
        card.append(image);
        card.append(body);
-       body.append(title);
-       body.append(button);
+
+        body.append(button);
     button.on('click', function (event) {
       showDetails(pokemon);
     });
   });
 }
-let modalConatiner = $("#modal-container");
+let modalConatiner = $("showModal");
 //show Modal function
 function showModal(item) {
- let modalBody = $('.modal-body');
- let modalTitle = $('modal-title');
- let modalHeader = $('modal-header');
+ let modalBody = $(".modal-body");
+ let modalTitle = $("modal-title");
+ let modalHeader = $("modal-header");
  modalTitle.empty();
  modalBody.empty();
 
