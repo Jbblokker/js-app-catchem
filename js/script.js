@@ -43,6 +43,8 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
         // Now we add the details to the item
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
+        item.weight = details.weight;
+        item.abilities = details.abilities;
         item.types = details.types;
       }).catch(function (e) {
         console.error(e);
@@ -77,12 +79,27 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     });
   });
 }
-let modalConatiner = $("showModal");
+let modalContainer = $("#modal-container");
+
+function concatAttributes (attributeName, list) {
+  let typelist = "";
+
+for (let index = 0; index < list.length; index++) {
+  const x = list[index];
+
+  typeList += x[attributeName].name;
+
+  if (list.length > 1 && index + 1 <= list.length) typeList += ", ";
+  }
+
+  return typeList;
+}
+
 //show Modal function
 function showModal(item) {
  let modalBody = $(".modal-body");
- let modalTitle = $("modal-title");
- let modalHeader = $("modal-header");
+ let modalTitle = $(".modal-title");
+ let modalHeader = $(".modal-header");
  modalTitle.empty();
  modalBody.empty();
 
@@ -90,15 +107,20 @@ function showModal(item) {
  let nameElement = $('<h1>' + item.name + '</h1>');
  // creating an inmage in modal content
 //// let imageElement = $('<img class='modal-img' style='width50%'>');
-  imageElement.atrr('src', item.imageUrl);
+  //imageElement.atrr('src', item.imageUrl);
  //creating element for height in modal content
  let heightElement = $('<p>' + 'height : ' + item.height + '</p>');
  //creating element for weight in modal content
  let weightElement = $('<p>' + 'weight : ' + item.weight + '</p>');
  //creating element for type in the modal contentElement
- let typesElement = $('<p>' + 'type : ' + item.types + '</p>');
- //creating element for the abilities in modal content
- let abilitiesElement = $('<p>' + 'abilities : ' + item.abilities + '</p>');
+
+const typeList = concatAttributes( attributeName "type", item.types);
+
+let typesElement = $('<p>' + 'type : ' + typeList + '</p>');
+
+const abilityList = concatAttributes(attributeName:"ability", item.abilities);
+
+ let abilitiesElement = $('<p>' + 'abilities : ' + abilityList + '</p>');
 
  modalTitle.append(nameElement);
 // modalBody.append(imageElement);
@@ -129,6 +151,12 @@ pokemonRepository.loadList().then(function() {
     pokemonRepository.addListItem(pokemon);
   });
 });
+
+const input = $('#myInput');
+
+input.on("keyup", () => search());
+input.on("search", ()=> console.log("x is clicked"));
+
 
 function search() {
   // Declare variables
