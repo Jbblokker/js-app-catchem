@@ -132,36 +132,17 @@ pokemonRepository.loadList().then(function() {
 
 function search() {
   // Declare variables
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('myInput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("myUL");
-  li = ul.querySelectorAll(".card");
+  var filter, cardList, txtValue;
+  filter = input.val().toUpperCase();
+  cardList = $(".card");
   //li = ul.getElementsByTagName('li');
 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < li.length; i++) {
-    a = li[i].querySelector(".card-body").querySelector(".card.title");
-    console.log(a.innerText);
-    txtValue = a.textContent
+  cardList.each(function (index) {
+    txtValue = $(this).data("name");
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
+      $(this).css("display", "");
     } else {
-      li[i].style.display = "none";
+      $(this).css("display", "none");
     }
-  }
-}
-
-
-//document.write used to display pokemon from array
-  //document.write('<br>' + 'My name is ' + pokemon.name + ' and I am ' + ' (height: ' +
-//pokemon.height + ')' + ' tall, and I am a ' + pokemon.type + ' pokemon.' );
-//});
-
-//For loop that was previously used to display pokemonList
-//for (let i=0; i < pokemonList.length; i++){
-  //if (pokemonList[i].height <= 7){
-    //document.write('<br>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')' );
-  //}else{
-    //document.write('<br>' + pokemonList[i].name + ' (height: ' + pokemonList[i].height + ')'
-    //+ ',Wow that is one big Pokemon');
+  });
+};
