@@ -81,7 +81,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 }
 let modalContainer = $("#modal-container");
 
-function concatAttributes (attributeName, list) {
+function concatAttributes(attributeName, list) {
   let typelist = "";
 
 for (let index = 0; index < list.length; index++) {
@@ -89,7 +89,7 @@ for (let index = 0; index < list.length; index++) {
 
   typeList += x[attributeName].name;
 
-  if (list.length > 1 && index + 1 <= list.length) typeList += ", ";
+  if (list.length > 1 && index + 1 !== list.length) typeList += ", ";
   }
 
   return typeList;
@@ -114,11 +114,11 @@ function showModal(item) {
  let weightElement = $('<p>' + 'weight : ' + item.weight + '</p>');
  //creating element for type in the modal contentElement
 
-const typeList = concatAttributes( attributeName "type", item.types);
+ const typeList = concatAttributes("type", item.types);
 
 let typesElement = $('<p>' + 'type : ' + typeList + '</p>');
 
-const abilityList = concatAttributes(attributeName:"ability", item.abilities);
+const abilityList = concatAttributes("ability", item.abilities);
 
  let abilitiesElement = $('<p>' + 'abilities : ' + abilityList + '</p>');
 
@@ -166,7 +166,7 @@ function search() {
   //li = ul.getElementsByTagName('li');
 
   cardList.each(function (index) {
-    txtValue = $(this).data("name");
+    txtValue = $(this).find('h5').text();
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       $(this).css("display", "");
     } else {
