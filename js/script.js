@@ -61,12 +61,14 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
        let image = $(
          '<img class="card-img-top mx-auto" style="width:30%;" alt="...">'
        );
-       let title = $('<h5 class="card-title">' + pokemon.name + "</h5>");
+      // let title = $('<h5 class="card-title">' + pokemon.name + "</h5>");
        image.attr("src", pokemon.imageUrl);
        let body = $('<div class="card-body" style="text-align: center;"></div>');
        let button = $(
          '<button type="button" class="btn" style="background-color: #f0e446; color: black" data-toggle="modal" data-target="#exampleModal">See profile</button>'
        );
+
+       card.data("name", pokemon.name);
 
        // Append
        row.append(card);
@@ -82,7 +84,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 let modalContainer = $("#modal-container");
 
 function concatAttributes(attributeName, list) {
-  let typelist = "";
+  let typeList = "";
 
 for (let index = 0; index < list.length; index++) {
   const x = list[index];
@@ -106,8 +108,8 @@ function showModal(item) {
  //creating element ofr name in modal contentElement
  let nameElement = $('<h1>' + item.name + '</h1>');
  // creating an inmage in modal content
-//// let imageElement = $('<img class='modal-img' style='width50%'>');
-  //imageElement.atrr('src', item.imageUrl);
+ let imageElement = $('<img class='modal-img' style='width50%'>');
+ imageElement.attr(item.imageUrl);
  //creating element for height in modal content
  let heightElement = $('<p>' + 'height : ' + item.height + '</p>');
  //creating element for weight in modal content
@@ -116,20 +118,20 @@ function showModal(item) {
 
  const typeList = concatAttributes("type", item.types);
 
-let typesElement = $('<p>' + 'type : ' + typeList + '</p>');
+ let typesElement = $('<p>' + 'type : ' + typeList + '</p>');
 
-const abilityList = concatAttributes("ability", item.abilities);
+ const abilityList = concatAttributes("ability", item.abilities);
 
  let abilitiesElement = $('<p>' + 'abilities : ' + abilityList + '</p>');
 
  modalTitle.append(nameElement);
-// modalBody.append(imageElement);
+ modalBody.append(imageElement);
  modalBody.append(heightElement);
  modalBody.append(weightElement);
  modalBody.append(typesElement);
  modalBody.append(abilitiesElement);
 
-modalContainer.addClass("is-visible");
+//modalContainer.addClass("is-visible");
 
 }
 
@@ -155,7 +157,8 @@ pokemonRepository.loadList().then(function() {
 const input = $('#myInput');
 
 input.on("keyup", () => search());
-input.on("search", ()=> console.log("x is clicked"));
+input.on("search", ()=>('click', clear()));
+
 
 
 function search() {
@@ -166,7 +169,7 @@ function search() {
   //li = ul.getElementsByTagName('li');
 
   cardList.each(function (index) {
-    txtValue = $(this).find('h5').text();
+    txtValue = $(this).data("name");
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       $(this).css("display", "");
     } else {
