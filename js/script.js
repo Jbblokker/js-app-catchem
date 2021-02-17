@@ -81,7 +81,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     });
   });
 }
-let modalContainer = $("#modal-container");
+//let modalContainer = $("#modal-container");
 
 function concatAttributes(attributeName, list) {
   let typeList = "";
@@ -107,9 +107,9 @@ function showModal(item) {
 
  //creating element ofr name in modal contentElement
  let nameElement = $('<h1>' + item.name + '</h1>');
- // creating an inmage in modal content
- let imageElement = $('<img class='modal-img' style='width50%'>');
- imageElement.attr(item.imageUrl);
+ // creating an image in modal content
+ let imageElement = $('<img class="modal-img" style="width50%">');
+  imageElement.attr('src', item.imageUrl);
  //creating element for height in modal content
  let heightElement = $('<p>' + 'height : ' + item.height + '</p>');
  //creating element for weight in modal content
@@ -157,8 +157,7 @@ pokemonRepository.loadList().then(function() {
 const input = $('#myInput');
 
 input.on("keyup", () => search());
-input.on("search", ()=>('click', clear()));
-
+input.on("search", ()=> console.log("x is clicked"));
 
 
 function search() {
