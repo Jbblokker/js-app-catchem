@@ -158,13 +158,9 @@ pokemonRepository.loadList().then(function () {
 const input = $("#myInput");
 
 input.on("keyup", () => search());
-input.on("search", () => console.log("x is called"));
+input.on("search", () => search());
 
-//input.on("click", (showDetails = ".card"));
-
-//input.on("click", function (event) {
-//showDetails(pokemon);
-
+function search() {
 // Declare variables
 var filter, cardList, txtValue;
 filter = input.val().toUpperCase();
@@ -173,9 +169,10 @@ cardList = $(".card");
 
 cardList.each(function (index) {
   txtValue = $(this).data("name");
-  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+  if (txtValue.toUpperCase().indexOf(filter) > -1 || filter === "") {
     $(this).css("display", "");
   } else {
     $(this).css("display", "none");
   }
-});
+ });
+};
