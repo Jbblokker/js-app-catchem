@@ -28,6 +28,14 @@ h1 {
   padding-right: 30px;
 }
 
+.modal-title {
+  text-transform: capitalize;
+}
+
+.card-title {
+  text-transform: capitalize;
+}
+
 .pokemon-list {
   text-align: center;
   margin-right: 70px;
