@@ -59,18 +59,17 @@ let pokemonRepository = (function () {
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
       let row = $(".row");
-
       let card = $(
         '<div class="card mt-5" style="width: 18rem; margin:13px;"></div>'
       );
       let image = $(
         '<img class="card-img-top mx-auto" style="width:30%;" alt="...">'
       );
-      // let title = $('<h5 class="card-title">' + pokemon.name + "</h5>");
       image.attr("src", pokemon.imageUrl);
+      let title = $('<h5 class="card-title">' + pokemon.name + "</h5>");
       let body = $('<div class="card-body" style="text-align: center;"></div>');
       let button = $(
-        '<button type="button" class="btn" style="background-color: #f0e446; color: black" data-toggle="modal" data-target="#exampleModal">See profile</button>'
+        '<button type="button" class="btn" style="background-color: #f0e446; color: black" data-toggle="modal" data-target="#exampleModal">Profile</button>'
       );
 
       card.data("name", pokemon.name);
@@ -79,7 +78,7 @@ let pokemonRepository = (function () {
       row.append(card);
       card.append(image);
       card.append(body);
-
+      body.append(title);
       body.append(button);
       button.on("click", function (event) {
         showDetails(pokemon);
