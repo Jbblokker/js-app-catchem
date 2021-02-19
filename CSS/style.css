@@ -6,6 +6,8 @@
 body {
   font-family: "Yusei Magic";
 }
+
+
 p {
   text-align: center;
 }
@@ -57,10 +59,9 @@ ul {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
-  background: #fff;
+  background: rgb(0 0 0 / 8%);
   padding: 15px;
   width: 100%;
-  max-width: 700px;
   text-align: center;
 }
 
